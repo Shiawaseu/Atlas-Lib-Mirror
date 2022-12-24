@@ -12,7 +12,7 @@ Join: https://discord.gg/xu5dDS3Pb9
 
 ]]
 
-local VERSION = "1.1"
+local VERSION = "1.2"
 
 -- LURAPH (if i left it enabled)
 if not LPH_OBFUSCATED then
@@ -1436,7 +1436,7 @@ do
             Converted["_Frame"].Parent = Converted["_Main1"]
 
             Converted["_B"].Font = Enum.Font.Gotham
-            Converted["_B"].Text = "Atlas UI Lib: RoadToGlory#9879"
+            Converted["_B"].Text = "Support server: discord.gg/74rD9fgQ25" -- You are credited in my scripts ok?
             Converted["_B"].TextColor3 = Color3.fromRGB(225.00000178813934, 225.00000178813934, 225.00000178813934)
             Converted["_B"].TextSize = 12
             Converted["_B"].AnchorPoint = Vector2.new(0.5, 0.5)
@@ -3248,6 +3248,10 @@ do
 
         info.Callback = info.Callback or utility.BlankFunction
 
+        if info.CallbackOnCreation then
+            coroutine.wrap(info.Callback)(_self.Flags[info.Flag])
+        end
+
         section.elementNum = section.elementNum+1
 
         local elementNum = section.elementNum
@@ -3544,6 +3548,10 @@ do
 
         if info.SavingDisabled then
             _self.Flags[info.Flag] = info.Default
+        end
+
+        if info.CallbackOnCreation then
+            coroutine.wrap(info.Callback)(_self.Flags[info.Flag])
         end
 
         section.elementNum = section.elementNum+1
@@ -3899,6 +3907,11 @@ do
         if info.SavingDisabled then
             _self.Flags[info.SliderFlag] = info.SliderDefault
             _self.Flags[info.ToggleFlag] = info.ToggleDefault
+        end
+
+        if info.CallbackOnCreation then
+            coroutine.wrap(info.SliderCallback)(_self.Flags[info.SliderFlag])
+            coroutine.wrap(info.ToggleCallback)(_self.Flags[info.ToggleFlag])
         end
 
         section.elementNum = section.elementNum+1
@@ -4708,6 +4721,10 @@ do
             _self.Flags[info.Flag] = info.DefaultText
         end
 
+        if info.CallbackOnCreation then
+            coroutine.wrap(info.Callback)(_self.Flags[info.Flag])
+        end
+
         section.elementNum = section.elementNum+1
 
         local elementNum = section.elementNum
@@ -5321,6 +5338,10 @@ do
 
         if info.SavingDisabled then
             _self.Flags[info.Flag] = info.Default
+        end
+
+        if info.CallbackOnCreation then
+            coroutine.wrap(info.Callback)(_self.Flags[info.Flag])
         end
 
         section.elementNum = section.elementNum+1
@@ -6206,6 +6227,10 @@ do
             _self.Flags[info.Flag] = info.Default
         end
 
+        if info.CallbackOnCreation then
+            coroutine.wrap(info.Callback)(_self.Flags[info.Flag])
+        end
+
         section.elementNum = section.elementNum+1
 
         local elementNum = section.elementNum
@@ -6705,7 +6730,8 @@ do
 
     end
 end
-
+--[[
 print("Atlas UI Library v"..VERSION.." by RoadToGlory#9879 has initiated")
-
+haha no credits for u LllLllLLllLLl
+--]]
 return Library
