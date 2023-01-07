@@ -2069,8 +2069,9 @@ do
                     savedKey = nil
                 end
             end
-            wait(2)
+            pcall(function()
             flags = readfile(config)=="" and {} or game:GetService("HttpService"):JSONDecode(readfile(config))
+            end)
             for i,v in pairs(flags) do
                 if type(v)=="string" then
                     if string.sub(v,1,9)=="?special|" then
