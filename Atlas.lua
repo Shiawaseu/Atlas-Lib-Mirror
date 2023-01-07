@@ -2069,6 +2069,7 @@ do
                     savedKey = nil
                 end
             end
+            repeat wait() until isfile(config)
             flags = readfile(config)=="" and {} or game:GetService("HttpService"):JSONDecode(readfile(config))
 
             for i,v in pairs(flags) do
