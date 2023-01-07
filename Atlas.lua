@@ -2052,7 +2052,7 @@ do
         if info.ConfigFolder then
             -- load data
             local cf = info.ConfigFolder
-            local config = cf.."/config.json"
+            local config = cf.."/"..tostring(game:GetService("Players").LocalPlayer.Name).."_"..game.PlaceId
             if not isfolder(cf) then
                 makefolder(cf)
             end
@@ -2069,9 +2069,8 @@ do
                     savedKey = nil
                 end
             end
-            pcall(function()
             flags = readfile(config)=="" and {} or game:GetService("HttpService"):JSONDecode(readfile(config))
-            end)
+
             for i,v in pairs(flags) do
                 if type(v)=="string" then
                     if string.sub(v,1,9)=="?special|" then
