@@ -2054,10 +2054,10 @@ do
             local cf = info.ConfigFolder
             local config = cf.."/"..tostring(game:GetService("Players").LocalPlayer.Name).."_"..game.PlaceId..".json"
             if not isfolder(cf) then
-                makefolder(cf)
+                repeat makefolder(cf) until isfolder(cf)
             end
             if not isfile(config) then
-                writefile(config,"")
+                repeat writefile(config,"") until isfile(config)
             end
             if info.CheckKey then
                 local key = cf.."/key.txt"
@@ -2069,7 +2069,6 @@ do
                     savedKey = nil
                 end
             end
-            repeat wait() until isfile(config)
             flags = readfile(config)=="" and {} or game:GetService("HttpService"):JSONDecode(readfile(config))
 
             for i,v in pairs(flags) do
