@@ -2054,15 +2054,10 @@ do
             local cf = info.ConfigFolder
             local config = cf.."/"..tostring(game:GetService("Players").LocalPlayer.Name).."_"..game.PlaceId..".json"
             if not isfolder(cf) then
-                repeat makefolder(cf)
-                    wait()
-                until isfolder(cf)
+             makefolder(cf)
             end
             if not isfile(config) then
-                repeat 
                     writefile(config,"") 
-                    wait() 
-                until isfile(config)
             end
             if info.CheckKey then
                 local key = cf.."/key.txt"
